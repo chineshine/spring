@@ -85,7 +85,12 @@ curl http://localhost:80/configserver/encrypt -d 123
 spring.cloud.config.server.git.password:{cipher}此处是一串很长很长很长的字符串
 ```
 如果使用的是 .propertie 文件  
-**上述配置的值千万不要加 引号(')**
+**上面配置的值千万不要加 引号(')**
+
+加密某个项目里的配置  
+```
+curl http://localhost:80/configserver/encrypt/{application}/{profile} -d 123
+```
 
 ### 其他
 项目禁用 /encrypt 和 /decrypt 路径
