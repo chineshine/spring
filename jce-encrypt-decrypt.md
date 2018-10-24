@@ -1,7 +1,8 @@
 ## spring 配置文件加密
 ### 说明
 本文档仅仅针对 spring-cloud-config 项目  
-对 spring-cloud-config 项目的配置文件中涉及到的敏感内容(如密码)进行加密,包括利用 spring-cloud-config 进行远程配置的项目的配置文件  
+对 spring-cloud-config 项目的配置文件中涉及到的敏感内容(如密码)进行加密  
+包括利用 spring-cloud-config 进行远程配置的项目的配置文件  
 要求机器上已装 java,且包含 jce
 
 ### 版本要求说明
@@ -10,7 +11,7 @@ jdk 8 以上的版本
 jdk_8u_151及以上版本已内置 jce加密
 
 ### 下载
-针对非 jdk_8u_151 版本及以上的 jdk  
+针对 **非** jdk_8u_151 版本及以上的 jdk  
 ##### jdk_6  
 http://www.oracle.com/technetwork/java/embedded/embedded-se/downloads/jce-6-download-429243.html  
 
@@ -22,9 +23,9 @@ http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.ht
 
 将下载后的文件放入 java 目录中  
 具体位置:(必需)  
-$java_home/jre/lib/security  
+`$java_home/jre/lib/security`  
 待定目录:(未测试)  
-$java_home/bin/lib/lib/security  
+`$java_home/bin/lib/lib/security`  
 待定目录未测试,官网也未给定,纯属网友建议,建议参考下载后的包里的 README 文件
 
 ### 生成对称加密
@@ -82,7 +83,7 @@ curl http://localhost:80/configserver/encrypt -d 123
 此时控制台会输出一串数字,复制
 将配置改为:
 ```
-spring.cloud.config.server.git.password:{cipher}此处是一串很长很长很长的字符串
+  spring.cloud.config.server.git.password:{cipher}此处是一串很长很长很长的字符串
 ```
 如果使用的是 .propertie 文件  
 **上面配置的值千万不要加 引号(')**
