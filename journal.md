@@ -27,3 +27,19 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 #### 关于 `TestRestTemplate`,`RestTemplate`
 `TestRestTemplate` 是 `spring-test` 包中的内容,实现了 `RestTemplate` 所有功能  
 `RestTemplate` 是 `spring` 用于远程调用的接口,相当于 `httpCLlient`
+
+#### 让 `spring cloud config` 远程配置文件不覆盖本地配置
+场景: 假如某个测试类,使用的配置中包含 `h2` 数据库,而实际生产和测试环境不会去使用 `h2` 数据库,所以要用不同的配置文件.测试类使用`@ActiveProfiles`引用本地配置文件去跑测试,然而`spring cloud config` 远程配置文件会覆盖本地配置.  
+解决: 在 `spring cloud config` 远程配置文件中加入配置:
+```
+spring:
+  cloud:
+    config:
+      overrideNone: true
+```
+注意: 一定要是 **远程配置文件**  
+此时,再在测试类中使用注解`@ActiveProfiles(profiles="profilename")`引入本地配置,远程配置就不会覆盖本地配置  
+参考类:
+```
+  org.springframework.cloud.bootstrap.config.PropertySourceBootstrapProperties
+```
