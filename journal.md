@@ -38,7 +38,7 @@ spring:
       overrideNone: true
 ```
 注意: 一定要是 **远程配置文件**  
-此时,再在测试类中使用注解`@ActiveProfiles(profiles="profilename")`引入本地配置,远程配置就不会覆盖本地配置  
+此时,再在测试类中使用注解`@ActiveProfiles(profiles="profilename")`引入本地配置,远程配置就不会覆盖本地配置,常用于 spring 测试类中  
 参考类:
 ```
   org.springframework.cloud.bootstrap.config.PropertySourceBootstrapProperties
