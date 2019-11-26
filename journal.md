@@ -21,8 +21,10 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 如果是 ``@Compenent`` 注解,可以配置为 `@Configuration`注解的类,添加 `@Bean` 类,再如上面的配置
 
 #### `spring-boot` 前后台传参
-`post` 请求: 如果传的是对象,参数对象前必须加上 `@RequestBody` 注解,不然对象接收不到值  
-`get` 请求: 不要加 `@RequestBody` 注解,否则参数接收不到
+- `post` 请求  
+  请求头中的`Content-Type`为 `application/json`,后台接口方法,对象参数前必须加上 `@RequestBody` 注解,不然对象接收不到值  
+- `get` 请求   
+  不要加 `@RequestBody` 注解,否则参数接收不到
 
 #### 关于 `TestRestTemplate`,`RestTemplate`
 `TestRestTemplate` 是 `spring-test` 包中的内容,实现了 `RestTemplate` 所有功能  
